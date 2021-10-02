@@ -1,0 +1,560 @@
+html {
+    background-color: #131316;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+html * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #131316;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.App {
+    background-color: #131316;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+/* Header */
+
+.header {
+    background-color: #262626;
+    color: #b9b9b9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+}
+
+.header-right input {
+    background-color: #454545;
+    border-radius: 45px;
+    border: none;
+    padding: 10px;
+    padding-left: 50px;
+    color: white;
+}
+
+.header-right input:focus {
+    outline: none;
+}
+
+.header-right * {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.navbarlist {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbarlist li {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.navitem {
+    color: #b9b9b9;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navitem:hover {
+    color: rgb(255, 196, 0);
+}
+
+.login {
+    color: #b9b9b9;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+.profile {
+    width: 55px;
+}
+
+.profile img {
+    width: 100%;
+    border-radius: 30px;
+    padding: 0px;
+}
+
+.login:hover {
+    color: rgb(255, 196, 0);
+}
+
+.navbarborder {
+    border-bottom: 3px solid rgb(255, 196, 0);
+}
+
+.bi.bi-search {
+    font-size: 1.5rem;
+    position: relative;
+    left: 40px;
+}
+
+.bi.bi-person-circle {
+    font-size: 2rem;
+}
+
+.weblogo {
+    width: 90px;
+    padding-right: 20px;
+}
+
+/* body */
+
+.containerpage {
+    width: 70%;
+    /* border: dashed 1px black; */
+}
+
+.title {
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+.buttonPromote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 55%;
+    height: 50%;
+    top: 25vw;
+}
+
+.cardgame {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.logogame {
+    width: 50%;
+}
+
+.logogame img {
+    width: 100%;
+}
+
+.cardgame h5 {
+    margin-bottom: 30px;
+}
+
+.cardgameDetail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    font-size: 15px;
+}
+
+.cardgame img {
+    width: 200px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cardgameDiscount {
+    background-color: #148e00;
+    padding: 5px 7px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.mygamecard {
+    background-color: #ff5c00;
+    padding: 8px 12px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.mygamecatalog {
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.cardgameRealprice {
+    color: rgb(110, 110, 110);
+    text-decoration: line-through;
+}
+
+.Gamecontainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.PosterCatalog img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.PosterCatalog {
+    width: 100%;
+}
+
+.discription {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    bottom: 50vh;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.747), rgba(255, 255, 255, 0));
+    padding: 80px 0;
+}
+
+.discription h3 {
+    color: white;
+    text-decoration: underline;
+}
+
+.discription h3:hover {
+    color: rgb(255, 196, 0);
+}
+
+.NewgamePremote {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #292929;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.NewgamePremote > img {
+    width: 80%;
+    border-radius: 20px 0 0 20px;
+}
+
+.NewgameLittlePromote {
+    display: flex;
+    align-items: center;
+    padding: 11px 28px;
+    /* background-color: rgb(88, 88, 88); */
+    font-size: 15px;
+}
+
+.NewgameLittlePromoteActive {
+    background-color: rgb(88, 88, 88);
+}
+
+.NewgameLittlePromote > p {
+    margin: 0;
+}
+
+.sidegamebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.NewgameLittlePromote > img {
+    width: 50%;
+    margin-right: 20px;
+}
+
+.submitbutton {
+    background-color: #007bed;
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    width: 100%;
+    color: white;
+}
+
+.submitbutton:hover {
+    background-color: #0068ca;
+}
+
+/* Footer */
+
+.footerPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    width: 100vw;
+    background-color: #0d0d0d;
+    color: rgb(88, 88, 88);
+}
+
+.footer-icon {
+    display: flex;
+    font-size: 2rem;
+}
+
+.footer-icon > i {
+    padding: 20px;
+}
+
+/* Login */
+
+.backgroundRegister {
+    background-image: url(picture/covers/gamescover.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 40px;
+}
+
+.formlogin {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    align-items: center;
+    background-color: #282828;
+    color: white;
+    padding: 50px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+}
+
+.formUpdate {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    align-items: center;
+    background-color: #282828;
+    color: white;
+    padding: 50px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+}
+
+.formlogin p {
+    margin: 0px;
+}
+
+.formlogin button {
+    margin: 0px;
+    margin-bottom: 30px;
+}
+
+.formUpdate button {
+    margin: 0px;
+    margin-bottom: 30px;
+}
+
+.formlogin input {
+    background-color: #282828;
+    border: 2px solid #4b4b4b;
+    width: 100%;
+    border-radius: 7px;
+    padding: 10px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.formUpdate input {
+    background-color: #282828;
+    border: 2px solid #4b4b4b;
+    width: 100%;
+    border-radius: 7px;
+    padding: 10px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.divlogo {
+    margin-bottom: 30px;
+    width: 100px;
+}
+
+.divlogo img {
+    width: 100%;
+}
+
+.profileContact {
+    width: 70vw;
+    display: flex;
+    background-color: #272727;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.profileContact img {
+    width: 180px;
+    border-radius: 100px;
+    margin: 20px;
+}
+
+/* Responsive */
+@media only screen and (max-width: 1000px) {
+    html {
+        width: 100vw;
+    }
+
+    .App {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header {
+        flex-direction: column;
+        width: 100vw;
+    }
+
+    .navbarlist {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .header-right {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        position: relative;
+        right: 5%;
+        flex-wrap: wrap;
+    }
+
+    .navbarlist li {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        outline: 0.2px solid rgb(56, 56, 56);
+    }
+
+    .navbarborder {
+        border: 5px solid rgb(255, 196, 0);
+    }
+
+    .Gamecontainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .header {
+        width: 100%;
+        position: relative;
+        z-index: 100;
+    }
+
+    .discription {
+        display: none;
+    }
+
+    .discription h3 {
+        display: flex;
+    }
+
+    .containerpage {
+        width: 90%;
+    }
+
+    .NewgamePremote {
+        width: 88vw;
+        border-radius: unset;
+    }
+
+    .NewgameLittlePromote {
+        display: none;
+    }
+
+    .NewgamePremote > img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .PosterCatalog {
+        width: 89vw;
+    }
+
+    .PosterCatalog img {
+        width: 100%;
+    }
+
+    .buttonPromote {
+        display: none;
+    }
+
+    .formlogin {
+        display: flex;
+        width: 95vw;
+        flex-direction: column;
+        align-items: center;
+        background-color: #282828;
+        color: white;
+        padding: 50px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 20px;
+    }
+
+    .profileContact {
+        width: 90vw;
+    }
+}
