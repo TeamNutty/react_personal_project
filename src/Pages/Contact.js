@@ -1,6 +1,5 @@
 import React from "react";
 import AppComponent from "../components/AppComponent";
-import ContainerPage from "../components/ContainerPage";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import profile from "../picture/covers/me.jpg";

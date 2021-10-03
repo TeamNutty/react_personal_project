@@ -11,7 +11,7 @@ function Header({ classname }) {
                     <img src={logo} alt="" className="weblogo" />
                 </NavLink>
                 <ol className="navbarlist">
-                    <NavLink to="/home" className="navitem" activeClassName="navbarborder">
+                    <NavLink to="/" className="navitem" activeClassName="navbarborder" exact>
                         <li>STORE</li>
                     </NavLink>
                     <NavLink to="/library" className="navitem" activeClassName="navbarborder">

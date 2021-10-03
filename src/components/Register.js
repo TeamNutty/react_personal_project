@@ -16,6 +16,9 @@ function Register({ handleToggleRegister }) {
             <p>Last Name</p>
             <input type="text" />
 
+            <p>Email</p>
+            <input type="text" />
+
             <p>Password</p>
             <input type="password" />
 

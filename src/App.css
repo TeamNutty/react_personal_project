@@ -155,7 +155,7 @@ body {
     position: absolute;
     width: 55%;
     height: 50%;
-    top: 25vw;
+    top: 22vw;
 }
 
 .cardgame {
@@ -163,6 +163,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin-bottom: 50px;
 }
 
@@ -211,6 +212,7 @@ body {
 .mygamecatalog {
     padding: 8px 12px;
     border-radius: 10px;
+    text-align: center;
 }
 
 .cardgameRealprice {
@@ -263,18 +265,18 @@ body {
     align-items: center;
     background-color: #292929;
     border-radius: 20px;
-    width: 100%;
+    height: 30vw;
 }
 
-.NewgamePremote > img {
-    width: 80%;
+.divpicNewgame img {
+    width: 100%;
     border-radius: 20px 0 0 20px;
 }
 
 .NewgameLittlePromote {
     display: flex;
     align-items: center;
-    padding: 11px 28px;
+    padding: 0px 28px;
     /* background-color: rgb(88, 88, 88); */
     font-size: 15px;
 }
@@ -290,11 +292,12 @@ body {
 .sidegamebar {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    height: 30vw;
 }
 
 .NewgameLittlePromote > img {
-    width: 50%;
+    width: 40%;
     margin-right: 20px;
 }
 
@@ -311,6 +314,73 @@ body {
     background-color: #0068ca;
 }
 
+.gamePageLogo {
+    width: 100%;
+}
+
+.gamePageLogo img {
+    width: 100%;
+}
+
+.gamePage {
+    display: flex;
+    justify-content: space-between;
+}
+
+.boxPagelogo {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.gamePageDiscription {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 0.9rem;
+    padding-bottom: 100px;
+    border-bottom: 2px solid rgb(100, 100, 100);
+}
+
+.likeSystem {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+}
+
+.like {
+    display: flex;
+    color: rgb(0, 255, 21);
+}
+
+.like * {
+    margin-left: 10px;
+}
+
+.dislike {
+    display: flex;
+    color: red;
+}
+
+.dislike * {
+    margin-left: 10px;
+}
+
+.likeanddislike {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.commentbox {
+    margin-top: 30px;
+}
+
+.MygameDetail {
+    display: flex;
+    flex-direction: column;
+}
 /* Footer */
 
 .footerPage {
@@ -348,7 +418,7 @@ body {
 
 .formlogin {
     display: flex;
-    width: 30%;
+    width: 40%;
     flex-direction: column;
     align-items: center;
     background-color: #282828;
@@ -362,7 +432,7 @@ body {
     margin-top: 30px;
     margin-bottom: 30px;
     display: flex;
-    width: 30%;
+    width: 50%;
     flex-direction: column;
     align-items: center;
     background-color: #282828;
@@ -427,10 +497,38 @@ body {
     flex-wrap: wrap;
 }
 
+.userprofile {
+    width: 100%;
+    display: flex;
+    background-color: #272727;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 20px 0;
+    justify-content: space-between;
+}
+
+.userprofile img {
+    width: 70px;
+    border-radius: 100px;
+}
+
+.userprofile p {
+    margin: 10px 0 0 0;
+}
+
 .profileContact img {
     width: 180px;
     border-radius: 100px;
     margin: 20px;
+}
+
+.usercomment {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 /* Responsive */
@@ -556,5 +654,32 @@ body {
 
     .profileContact {
         width: 90vw;
+    }
+
+    .formUpdate {
+        width: 90%;
+    }
+
+    .divpicNewgame img {
+        border-radius: 20px;
+    }
+
+    .gamePage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gamePage iframe {
+        width: 100vw;
+        height: 60vw;
+    }
+
+    .likeSystem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 70px;
+        flex-wrap: wrap;
     }
 }

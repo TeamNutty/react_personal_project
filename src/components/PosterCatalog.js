@@ -9,6 +9,7 @@ function PosterCatalog() {
                 <img src={poster}></img>
                 <div className="discription">
                     <h3>Explore our catalog for your next favorite game!</h3>
+                    <button className="btn btn-outline-warning btn-lg">BROWSE ALL</button>
                 </div>
             </div>
         </NavLink>

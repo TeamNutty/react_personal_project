@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import gamelogo from "../picture/covers/logoghost.png";
 
 function NewgamePromoteButton() {
@@ -8,6 +9,7 @@ function NewgamePromoteButton() {
                 <img src={gamelogo} alt="" />
             </div>
             <p>In war-torn Tsushima, ancient beauty endures</p>
+            <button className="btn btn-primary btn-lg">GET NOW</button>
         </div>
     );
 }

@@ -7,6 +7,7 @@ import Catalog from "./Pages/Catalog";
 import Contact from "./Pages/Contact";
 import FormloginAndRegister from "./Pages/FormloginAndRegister";
 import AdminAddgames from "./Pages/AdminAddgames";
+import GamePage from "./Pages/GamePage";
 
 function App() {
     return (
@@ -14,10 +15,11 @@ function App() {
             <Switch>
                 <Route path="/catalog" component={Catalog} />
                 <Route path="/library" component={Library} />
-                <Route path="/home" component={Index} />
                 <Route path="/login" component={FormloginAndRegister} />
                 <Route path="/contact" component={Contact} />
                 <Route path="/admin" component={AdminAddgames} />
+                <Route path="/gamepage" component={GamePage} />
+                <Route path="/" component={Index} />
             </Switch>
         </BrowserRouter>
     );

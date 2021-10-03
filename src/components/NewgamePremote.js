@@ -1,13 +1,16 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import newgameCover from "./../picture/covers/ghost of tsushima coverbig.jpg";
 import NewgameLittlePromote from "./NewgameLittlePromote";
-import NewgamePromoteButton from "./NewgamePromoteButton";
 
 function NewgamePremote() {
     return (
         <div className="NewgamePremote">
-            <img src={newgameCover}></img>
-            <NewgamePromoteButton />
+            <NavLink to="/gamepage">
+                <div className="divpicNewgame">
+                    <img src={newgameCover}></img>
+                </div>
+            </NavLink>
             <div className="sidegamebar">
                 <NewgameLittlePromote name="Ghost" className="" NewgameLittlePromoteActive />
                 <NewgameLittlePromote name="Ghost" />

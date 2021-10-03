@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import gameCover from "./../picture/covers/Ghost_of_Tsushima.jpg";
 
 function NewgameLittlePromote({ name }) {
