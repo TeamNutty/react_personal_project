@@ -15,7 +15,7 @@ function Header({ classname }) {
                         <li>STORE</li>
                     </NavLink>
                     <NavLink to="/library" className="navitem" activeClassName="navbarborder">
-                        <li>LIBRALY</li>
+                        <li>LIBRARY</li>
                     </NavLink>
                     <NavLink to="/catalog" className="navitem" activeClassName="navbarborder">
                         <li>CATALOG</li>

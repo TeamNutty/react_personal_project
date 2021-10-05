@@ -531,6 +531,16 @@ body {
     align-items: center;
 }
 
+.validate {
+    color: rgba(255, 208, 0, 0.466);
+    font-size: 0.8rem;
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    position: relative;
+    bottom: 30px;
+}
+
 /* Responsive */
 @media only screen and (max-width: 1000px) {
     html {

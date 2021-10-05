@@ -1,29 +1,104 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import logo from "./../picture/icon/logologin.png";
+import validator from "validator";
 
-function Register({ handleToggleRegister }) {
+function Register() {
+    // state
+    const [profilePicture, setProfilePicture] = useState(null);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+    // validate state
+    const [validateFirstname, setValidateFirstname] = useState("");
+    const [validateLastname, setvalidateLastname] = useState("");
+    const [validateEmail, setValidateEmail] = useState("");
+    const [validatePassword, setValidatePassword] = useState("");
+    const [validateConfirmPassword, setValidateConfirmPassword] = useState("");
+
+    // history
+    const history = useHistory();
+
+    // function
+    const handleSubmitRegister = async e => {
+        try {
+            if (firstName.trim() === "") {
+                setValidateFirstname("Firstname is required");
+            } else {
+                setValidateFirstname("");
+            }
+            if (lastName.trim() === "") {
+                setvalidateLastname("Lastname is required");
+            } else {
+                setvalidateLastname("");
+            }
+            if (!validator.isEmail(email)) {
+                setValidateEmail("plz use email form");
+            } else {
+                setValidateEmail("");
+            }
+            if (password.trim() === "") {
+                setValidatePassword("Password is required");
+            } else {
+                setValidatePassword("");
+            }
+            if (password !== confirmPassword) {
+                setValidateConfirmPassword("Password is wrong");
+            } else {
+                setValidateConfirmPassword("");
+            }
+            e.preventDefault();
+            const res = await axios.post("http://localhost:9999/register", {
+                firstName,
+                lastName,
+                email,
+                password,
+                confirmPassword,
+            });
+
+            console.log(res.data);
+
+            history.push({
+                pathname: "/login",
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const handleChangeProfilePicture = () => {};
+
     return (
-        <form className="formlogin">
+        <form className="formlogin" onSubmit={handleSubmitRegister}>
             <div className="divlogo">
                 <img src={logo} alt="logo" />
             </div>
             <p>Profile Picture</p>
-            <input type="file" />
+            <input type="file" onChange={handleChangeProfilePicture} />
 
             <p>First Name</p>
-            <input type="text" />
+            <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} />
+            <p className="validate">{validateFirstname}</p>
 
             <p>Last Name</p>
-            <input type="text" />
+            <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} />
+            <p className="validate">{validateLastname}</p>
 
             <p>Email</p>
-            <input type="text" />
+            <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
+            <p className="validate">{validateEmail}</p>
 
             <p>Password</p>
-            <input type="password" />
+            <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+            <p className="validate">{validatePassword}</p>
 
             <p>Confirm Password</p>
-            <input type="password" />
+            <input type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
+            <p className="validate">{validateConfirmPassword}</p>
 
             <button className="submitbutton">REGISTER</button>
         </form>
