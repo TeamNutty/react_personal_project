@@ -1,9 +1,23 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import logo from "./../picture/icon/logologin.png";
 import profile from "../picture/covers/me.jpg";
+import { AuthContext } from "./contexts/authContext";
+import { removeToken } from "../services/localStorage";
 
 function Header({ classname }) {
+    // state
+    const { user, setUser } = useContext(AuthContext);
+    const history = useHistory();
+
+    // function
+    const handleclickLogout = e => {
+        e.preventDefault();
+        removeToken();
+        setUser(null);
+        history.push("/");
+    };
+
     return (
         <div className="header">
             <div className="header-left">
@@ -14,34 +28,43 @@ function Header({ classname }) {
                     <NavLink to="/" className="navitem" activeClassName="navbarborder" exact>
                         <li>STORE</li>
                     </NavLink>
-                    <NavLink to="/library" className="navitem" activeClassName="navbarborder">
-                        <li>LIBRARY</li>
-                    </NavLink>
+                    {user && (
+                        <NavLink to="/library" className="navitem" activeClassName="navbarborder">
+                            <li>LIBRARY</li>
+                        </NavLink>
+                    )}
+
                     <NavLink to="/catalog" className="navitem" activeClassName="navbarborder">
                         <li>CATALOG</li>
                     </NavLink>
                     <NavLink to="/contact" className="navitem" activeClassName="navbarborder">
                         <li>CONTACT</li>
                     </NavLink>
-                    <NavLink to="/admin" className="navitem" activeClassName="navbarborder">
-                        <li>ADMIN</li>
-                    </NavLink>
+                    {user?.isAdmin && (
+                        <NavLink to="/admin" className="navitem" activeClassName="navbarborder">
+                            <li>ADMIN</li>
+                        </NavLink>
+                    )}
                 </ol>
             </div>
 
             <div className="header-right">
                 <i class="bi bi-search"></i>
                 <input type="search" placeholder="Search" />
-                <NavLink to="/login" className="login">
-                    {/* <i class="bi bi-person-circle"></i> */}
+                {user?.profilePicture ? (
                     <div className="profile">
-                        <img src={profile} />
+                        <img src={user.profilePicture} />
                     </div>
-                </NavLink>
-                <NavLink to="/login" className="login">
-                    {/* <p>SIGN IN</p> */}
-                    <p>SIGN OUT</p>
-                </NavLink>
+                ) : (
+                    <i class="bi bi-person-circle"></i>
+                )}
+                {user ? (
+                    <p onClick={handleclickLogout}>SIGN OUT</p>
+                ) : (
+                    <NavLink to="/login" className="login">
+                        <p>SIGN IN</p>
+                    </NavLink>
+                )}
             </div>
         </div>
     );

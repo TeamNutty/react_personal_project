@@ -52,14 +52,16 @@ function Register() {
                 setValidateConfirmPassword("");
             }
             e.preventDefault();
-            const res = await axios.post("http://localhost:9999/register", {
-                firstName,
-                lastName,
-                email,
-                password,
-                confirmPassword,
-            });
 
+            const formData = new FormData();
+            formData.append("firstName", firstName);
+            formData.append("lastName", lastName);
+            formData.append("email", email);
+            formData.append("password", password);
+            formData.append("confirmPassword", confirmPassword);
+            formData.append("profilePicture", profilePicture);
+
+            const res = await axios.post("http://localhost:9999/register", formData);
             console.log(res.data);
 
             history.push({
@@ -70,7 +72,10 @@ function Register() {
         }
     };
 
-    const handleChangeProfilePicture = () => {};
+    const handleChangeProfilePicture = e => {
+        console.log(e.target.files);
+        setProfilePicture(e.target.files[0]);
+    };
 
     return (
         <form className="formlogin" onSubmit={handleSubmitRegister}>
