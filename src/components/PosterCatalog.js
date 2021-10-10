@@ -4,7 +4,7 @@ import poster from "./../picture/files/games_streaming.jpg";
 
 function PosterCatalog() {
     return (
-        <NavLink to="/catalog">
+        <NavLink to="/catalog" className="navlink">
             <div className="PosterCatalog">
                 <img src={poster}></img>
                 <div className="discription">

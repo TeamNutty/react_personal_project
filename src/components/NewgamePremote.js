@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import newgameCover from "./../picture/covers/ghost of tsushima coverbig.jpg";
 import NewgameLittlePromote from "./NewgameLittlePromote";
+import { AuthContext } from "../components/contexts/authContext";
 
 function NewgamePremote() {
+    const { allGame } = useContext(AuthContext);
+    const newAllgamesort = [...allGame].sort((a, b) => {
+        return b.id - a.id;
+    });
+    console.log(newAllgamesort);
     return (
         <div className="NewgamePremote">
             <NavLink to="/gamepage">
@@ -12,10 +18,14 @@ function NewgamePremote() {
                 </div>
             </NavLink>
             <div className="sidegamebar">
-                <NewgameLittlePromote name="Ghost" className="" NewgameLittlePromoteActive />
-                <NewgameLittlePromote name="Ghost" />
-                <NewgameLittlePromote name="Ghost" />
-                <NewgameLittlePromote name="Ghost" />
+                {newAllgamesort.splice(0, 4).map(item => (
+                    <NewgameLittlePromote
+                        name={item.name}
+                        gameCover={item.gameCover}
+                        className=""
+                        NewgameLittlePromoteActive
+                    />
+                ))}
             </div>
         </div>
     );

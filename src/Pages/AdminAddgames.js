@@ -11,7 +11,7 @@ function AdminAddgames() {
     const [gamelogo, setGamelogo] = useState(null);
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
-    const [discount, setDiscount] = useState("");
+    const [discount, setDiscount] = useState(null);
     const [trailerLink, setTrailerLink] = useState("");
     const [discription, setDiscription] = useState("");
 

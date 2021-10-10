@@ -4,6 +4,7 @@ import logo from "./../picture/icon/logologin.png";
 import profile from "../picture/covers/me.jpg";
 import { AuthContext } from "./contexts/authContext";
 import { removeToken } from "../services/localStorage";
+import Swal from "sweetalert2";
 
 function Header({ classname }) {
     // state
@@ -13,9 +14,22 @@ function Header({ classname }) {
     // function
     const handleclickLogout = e => {
         e.preventDefault();
-        removeToken();
-        setUser(null);
-        history.push("/");
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Logout",
+        }).then(result => {
+            if (result.isConfirmed) {
+                Swal.fire("Success!", "logout successful", "success");
+                removeToken();
+                setUser(null);
+                history.push("/");
+            }
+        });
     };
 
     return (

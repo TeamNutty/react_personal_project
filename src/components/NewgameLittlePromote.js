@@ -1,11 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import gameCover from "./../picture/covers/Ghost_of_Tsushima.jpg";
 
-function NewgameLittlePromote({ name }) {
+function NewgameLittlePromote({ name, gameCover }) {
     return (
         <div className="NewgameLittlePromote ">
-            <img src={gameCover}></img>
+            <div className="imagebox">
+                <img src={gameCover}></img>
+            </div>
             <p>{name}</p>
         </div>
     );
