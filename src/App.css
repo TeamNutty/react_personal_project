@@ -616,6 +616,19 @@ body {
     bottom: 30px;
 }
 
+.searchbarbox {
+    position: absolute;
+    background-color: rgba(65, 65, 65, 0.911);
+    top: 66px;
+    right: 120px;
+    padding: 0;
+}
+
+.searchbarbox * {
+    padding: 20px;
+    border: solid 1px rgb(87, 87, 87);
+}
+
 /* Responsive */
 @media only screen and (max-width: 1000px) {
     html {

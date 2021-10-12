@@ -1,19 +1,14 @@
 import React from "react";
-import profile from "../picture/covers/me.jpg";
 
-function UserComment() {
+function UserComment({ profile, name, comment }) {
     return (
         <div className="userprofile">
             <div>
-                <img src={profile} />
-                <p>Nuttadol</p>
+                {profile ? <img src={profile} /> : <i class="bi bi-person-circle" style={{ fontSize: "4rem" }}></i>}
+                <p>{name}</p>
             </div>
             <div className="usercomment">
-                <p>
-                    Verry
-                    G;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqood
-                    Game
-                </p>
+                <p>{comment}</p>
             </div>
         </div>
     );

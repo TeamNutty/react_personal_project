@@ -1,13 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import logo from "./../picture/icon/logologin.png";
-import profile from "../picture/covers/me.jpg";
 import { AuthContext } from "./contexts/authContext";
 import { removeToken } from "../services/localStorage";
 import Swal from "sweetalert2";
+import Searchbarbox from "./Searchbarbox";
+import { useEffect } from "react/cjs/react.development";
+import axios from "../config/axios";
 
 function Header({ classname }) {
     // state
+    const [search, setSearch] = useState("");
+    const [allgame, setAllgame] = useState([]);
     const { user, setUser } = useContext(AuthContext);
     const history = useHistory();
 
@@ -31,6 +35,18 @@ function Header({ classname }) {
             }
         });
     };
+
+    useEffect(() => {
+        const fetchAllgame = async () => {
+            const allGamefetch = await axios.get("/getallgame");
+            setAllgame(allGamefetch.data.game);
+        };
+        fetchAllgame();
+    }, []);
+
+    console.log(allgame);
+
+    const fineGame = [...allgame].filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
 
     return (
         <div className="header">
@@ -64,7 +80,7 @@ function Header({ classname }) {
 
             <div className="header-right">
                 <i class="bi bi-search"></i>
-                <input type="search" placeholder="Search" />
+                <input type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
                 {user?.profilePicture ? (
                     <div className="profile">
                         <img src={user.profilePicture} />
@@ -79,6 +95,7 @@ function Header({ classname }) {
                         <p>SIGN IN</p>
                     </NavLink>
                 )}
+                <Searchbarbox fineGame={fineGame} search={search} setSearch={setSearch} />
             </div>
         </div>
     );

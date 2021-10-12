@@ -19,7 +19,7 @@ function AuthContextProvider({ children }) {
     }, [refresh]);
 
     return (
-        <AuthContext.Provider value={{ user, setUser, allGame, setAllGame, setRefresh }}>
+        <AuthContext.Provider value={{ user, setUser, allGame, setAllGame, setRefresh, refresh }}>
             {children}
         </AuthContext.Provider>
     );

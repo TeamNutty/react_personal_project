@@ -15,9 +15,12 @@ function VdoAndPurchase() {
     const [price, setPrice] = useState("");
     const [gameId, setGameId] = useState("");
     const [userId, setUserId] = useState("");
+    const [comment, setComment] = useState("");
+    const [allcomment, setAllcomment] = useState([]);
+
     const params = useParams();
     const history = useHistory();
-    const { user, setRefresh } = useContext(AuthContext);
+    const { user, setRefresh, refresh } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchOnegame = async () => {
@@ -28,7 +31,17 @@ function VdoAndPurchase() {
             setUserId(user?.id);
         };
         fetchOnegame();
-    }, []);
+    }, [params]);
+
+    useEffect(() => {
+        const fetchAllcomment = async () => {
+            const allcomment = await axios.get("/getAllcommentGame");
+            setAllcomment(allcomment?.data?.allComment);
+        };
+        fetchAllcomment();
+    }, [refresh]);
+
+    const allcommentFilter = [...allcomment].filter(item => item?.Game?.id === Number(gameId));
 
     const handleClickBuygame = async () => {
         try {
@@ -52,6 +65,21 @@ function VdoAndPurchase() {
                     }
                 });
             }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const handleSubmitcomment = async e => {
+        try {
+            e.preventDefault();
+            await axios.post("/commentGame", {
+                comment,
+                userId,
+                gameId,
+            });
+            setComment("");
+            setRefresh(cur => !cur);
         } catch (err) {
             console.log(err);
         }
@@ -82,13 +110,22 @@ function VdoAndPurchase() {
                 <p>{oneGame?.data?.oneGame?.discription}</p>
             </div>
             <div class="input-group commentbox">
-                <input type="text" class="form-control" placeholder="Comment" />
-                <button className="btn btn-primary">Submit</button>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Comment"
+                    value={comment}
+                    onChange={e => setComment(e.target.value)}
+                />
+                <button className="btn btn-primary" onClick={handleSubmitcomment}>
+                    Submit
+                </button>
             </div>
-
-            <UserComment />
-            <UserComment />
-            <UserComment />
+            {allcommentFilter
+                .sort((a, b) => b.id - a.id)
+                .map(item => (
+                    <UserComment profile={item.User.profilePicture} name={item.User.firstName} comment={item.comment} />
+                ))}
         </>
     );
 }
