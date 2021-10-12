@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../config/axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import logo from "./../picture/icon/logologin.png";
@@ -26,6 +26,8 @@ function Register() {
     // function
     const handleSubmitRegister = async e => {
         try {
+            e.preventDefault();
+
             if (firstName.trim() === "") {
                 setValidateFirstname("Firstname is required");
             } else {
@@ -51,7 +53,6 @@ function Register() {
             } else {
                 setValidateConfirmPassword("");
             }
-            e.preventDefault();
 
             const formData = new FormData();
             formData.append("firstName", firstName);
@@ -61,7 +62,7 @@ function Register() {
             formData.append("confirmPassword", confirmPassword);
             formData.append("profilePicture", profilePicture);
 
-            const res = await axios.post("http://localhost:9999/register", formData);
+            const res = await axios.post("/register", formData);
             console.log(res.data);
 
             history.push({

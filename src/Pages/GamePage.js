@@ -8,13 +8,10 @@ import Title from "../components/Title";
 import VdoAndPurchase from "../components/VdoAndPurchase";
 
 function GamePage() {
-    const { oneGame } = useContext(AuthContext);
-
     return (
         <AppComponent>
             <Header />
             <ContainerPage>
-                <Title titleName={oneGame[0]?.name} />
                 <VdoAndPurchase />
             </ContainerPage>
             <Footer />

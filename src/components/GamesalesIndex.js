@@ -15,6 +15,7 @@ function GamesalesIndex() {
                     discount={Number(item.discount).toFixed(0)}
                     fullprice={Number(item.price).toFixed(0)}
                     discountPrice={item.price - Number(item.price * item.discount) / 100}
+                    gameId={item.id}
                 />
             ))}
         </div>

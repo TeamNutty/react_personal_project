@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../config/axios";
 import jwtDecode from "jwt-decode";
 import React, { useContext, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
@@ -41,7 +41,7 @@ function Login() {
             }
 
             e.preventDefault();
-            const res = await axios.post("http://localhost:9999/login", {
+            const res = await axios.post("/login", {
                 email,
                 password,
             });

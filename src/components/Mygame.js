@@ -1,7 +1,6 @@
 import React from "react";
-import gameCover from "./../picture/covers/Ghost_of_Tsushima.jpg";
 
-function Mygame({ name }) {
+function Mygame({ name, gameCover }) {
     return (
         <div className="cardgame">
             <img src={gameCover}></img>

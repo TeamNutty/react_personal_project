@@ -10,7 +10,6 @@ import Title from "../components/Title";
 function Catalog() {
     const { allGame } = useContext(AuthContext);
     const newSortgame = [...allGame].sort((a, b) => b.id - a.id);
-    console.log(newSortgame);
 
     return (
         <div>

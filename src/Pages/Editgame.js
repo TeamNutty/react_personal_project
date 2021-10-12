@@ -1,25 +1,39 @@
 import axios from "../config/axios";
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
-import { useContext } from "react/cjs/react.development";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import AppComponent from "../components/AppComponent";
 import { AuthContext } from "../components/contexts/authContext";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
-function AdminAddgames() {
+function Editgame() {
     //state
+    const [oneGame, setOneGame] = useState({});
     const [gamepicture, setGamepicture] = useState(null);
     const [gamecover, setGamecover] = useState(null);
     const [gamelogo, setGamelogo] = useState(null);
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
-    const [discount, setDiscount] = useState(null);
+    const [discount, setDiscount] = useState("");
     const [trailerLink, setTrailerLink] = useState("");
     const [discription, setDiscription] = useState("");
-    const history = useHistory();
-
     const { setRefresh } = useContext(AuthContext);
+    const params = useParams();
+    const history = useHistory();
+    // useEffect
+    useEffect(() => {
+        const fetchOnegame = async () => {
+            const oneGame = await axios.get(`/getOnegame/${params.gameId}`);
+            setOneGame(oneGame.data.oneGame);
+            setName(oneGame.data.oneGame.name);
+            setPrice(oneGame.data.oneGame.price);
+            setDiscount(oneGame.data.oneGame.discount);
+            setTrailerLink(oneGame.data.oneGame.trailerLink);
+            setDiscription(oneGame.data.oneGame.discription);
+        };
+        fetchOnegame();
+    }, []);
+
     //function
     const handleChangegamepicture = e => {
         setGamepicture(e.target.files[0]);
@@ -33,7 +47,7 @@ function AdminAddgames() {
         setGamelogo(e.target.files[0]);
     };
 
-    const handleSubmitaddgame = async e => {
+    const handleSubmitEditgame = async e => {
         try {
             e.preventDefault();
             const formData = new FormData();
@@ -45,19 +59,18 @@ function AdminAddgames() {
             formData.append("discount", discount);
             formData.append("trailerLink", trailerLink);
             formData.append("discription", discription);
-            const res = await axios.post("/admin", formData);
+            const res = await axios.put(`/catalog/${params.gameId}`, formData);
             setRefresh(cur => !cur);
             history.push("/catalog");
         } catch (err) {
             console.log(err);
         }
     };
-
     return (
         <div>
             <AppComponent>
                 <Header />
-                <form className="formUpdate" onSubmit={handleSubmitaddgame}>
+                <form className="formUpdate" onSubmit={handleSubmitEditgame}>
                     <p>Game Picture</p>
                     <input type="file" onChange={handleChangegamepicture} />
 
@@ -87,7 +100,7 @@ function AdminAddgames() {
                     <p>Discription</p>
                     <input type="text" value={discription} onChange={e => setDiscription(e.target.value)} />
 
-                    <button className="submitbutton">Update</button>
+                    <button className="submitbutton">Confirm Editing</button>
                 </form>
                 <Footer />
             </AppComponent>
@@ -95,4 +108,4 @@ function AdminAddgames() {
     );
 }
 
-export default AdminAddgames;
+export default Editgame;

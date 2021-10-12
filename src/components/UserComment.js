@@ -8,7 +8,13 @@ function UserComment() {
                 <img src={profile} />
                 <p>Nuttadol</p>
             </div>
-            <div className="usercomment">Verry Good Game</div>
+            <div className="usercomment">
+                <p>
+                    Verry
+                    G;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqood
+                    Game
+                </p>
+            </div>
         </div>
     );
 }
