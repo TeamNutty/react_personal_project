@@ -19,6 +19,7 @@ function Register() {
     const [validateEmail, setValidateEmail] = useState("");
     const [validatePassword, setValidatePassword] = useState("");
     const [validateConfirmPassword, setValidateConfirmPassword] = useState("");
+    const [previewProfile, setPreviewProfile] = useState(null);
 
     // history
     const history = useHistory();
@@ -76,6 +77,7 @@ function Register() {
     const handleChangeProfilePicture = e => {
         console.log(e.target.files);
         setProfilePicture(e.target.files[0]);
+        setPreviewProfile(URL.createObjectURL(e.target.files[0]));
     };
 
     return (
@@ -84,6 +86,11 @@ function Register() {
                 <img src={logo} alt="logo" />
             </div>
             <p>Profile Picture</p>
+            {previewProfile && (
+                <div className="showpic">
+                    <img src={previewProfile} />
+                </div>
+            )}
             <input type="file" onChange={handleChangeProfilePicture} />
 
             <p>First Name</p>

@@ -26,18 +26,20 @@ function Login() {
                 setValidateEmail("Email is required");
             } else {
                 setValidateEmail("");
+                if (!validator.isEmail(email)) {
+                    setValidateEmail("Email is wrong");
+                } else {
+                    setValidateEmail("");
+                }
             }
-
-            if (!validator.isEmail(email)) {
-                setValidateEmail("Email is wrong");
-            } else {
-                setValidateEmail("");
-            }
-
             if (password.trim() === "") {
                 setValidatePassword("Password is required");
             } else {
-                setValidatePassword("");
+                if (password.length < 6) {
+                    setValidatePassword("Password must more than 6 length");
+                } else {
+                    setValidatePassword("");
+                }
             }
 
             e.preventDefault();

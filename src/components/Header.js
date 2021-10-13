@@ -44,8 +44,6 @@ function Header({ classname }) {
         fetchAllgame();
     }, []);
 
-    console.log(allgame);
-
     const fineGame = [...allgame].filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
 
     return (
@@ -89,7 +87,9 @@ function Header({ classname }) {
                     <i class="bi bi-person-circle"></i>
                 )}
                 {user ? (
-                    <p onClick={handleclickLogout}>SIGN OUT</p>
+                    <p onClick={handleclickLogout} className="signoutbutton">
+                        SIGN OUT
+                    </p>
                 ) : (
                     <NavLink to="/login" className="login">
                         <p>SIGN IN</p>

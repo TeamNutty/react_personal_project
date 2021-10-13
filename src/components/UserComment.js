@@ -8,7 +8,9 @@ function UserComment({ profile, name, comment }) {
                 <p>{name}</p>
             </div>
             <div className="usercomment">
-                <p>{comment}</p>
+                <div className="nameComment">
+                    <p>{comment}</p>
+                </div>
             </div>
         </div>
     );

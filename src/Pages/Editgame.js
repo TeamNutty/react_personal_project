@@ -14,12 +14,18 @@ function Editgame() {
     const [gamelogo, setGamelogo] = useState(null);
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
-    const [discount, setDiscount] = useState("");
+    const [discount, setDiscount] = useState(0);
     const [trailerLink, setTrailerLink] = useState("");
     const [discription, setDiscription] = useState("");
     const { setRefresh } = useContext(AuthContext);
     const params = useParams();
     const history = useHistory();
+
+    // preview state
+    const [pregamepicture, setPregamepicture] = useState(null);
+    const [pregamecover, setPregamecover] = useState(null);
+    const [pregameLogo, setPregameLogo] = useState(null);
+
     // useEffect
     useEffect(() => {
         const fetchOnegame = async () => {
@@ -37,14 +43,17 @@ function Editgame() {
     //function
     const handleChangegamepicture = e => {
         setGamepicture(e.target.files[0]);
+        setPregamepicture(URL.createObjectURL(e.target.files[0]));
     };
 
     const handleChangegamecover = e => {
         setGamecover(e.target.files[0]);
+        setPregamecover(URL.createObjectURL(e.target.files[0]));
     };
 
     const handleChangegamelogo = e => {
         setGamelogo(e.target.files[0]);
+        setPregameLogo(URL.createObjectURL(e.target.files[0]));
     };
 
     const handleSubmitEditgame = async e => {
@@ -72,12 +81,27 @@ function Editgame() {
                 <Header />
                 <form className="formUpdate" onSubmit={handleSubmitEditgame}>
                     <p>Game Picture</p>
+                    {pregamepicture && (
+                        <div className="showpic">
+                            <img src={pregamepicture} />
+                        </div>
+                    )}
                     <input type="file" onChange={handleChangegamepicture} />
 
                     <p>Game Cover</p>
+                    {pregamecover && (
+                        <div className="showpic">
+                            <img src={pregamecover} />
+                        </div>
+                    )}
                     <input type="file" onChange={handleChangegamecover} />
 
                     <p>Game logo</p>
+                    {pregameLogo && (
+                        <div className="showpic">
+                            <img src={pregameLogo} />
+                        </div>
+                    )}
                     <input type="file" onChange={handleChangegamelogo} multiple />
 
                     <p>Name</p>

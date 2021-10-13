@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Commentbox from "./Commentbox";
-import LikeSystem from "./LikeSystem";
 import UserComment from "./UserComment";
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from "react-html-parser";
 import { useParams, useHistory } from "react-router-dom";
@@ -17,6 +15,7 @@ function VdoAndPurchase() {
     const [userId, setUserId] = useState("");
     const [comment, setComment] = useState("");
     const [allcomment, setAllcomment] = useState([]);
+    const [alllibrary, setAllLibrary] = useState([]);
 
     const params = useParams();
     const history = useHistory();
@@ -40,6 +39,22 @@ function VdoAndPurchase() {
         };
         fetchAllcomment();
     }, [refresh]);
+
+    // fetch library
+    useEffect(() => {
+        const fetchlibrary = async () => {
+            const library = await axios.get("/getToshowlibrary");
+            setAllLibrary(library?.data?.gameLibrary);
+        };
+        fetchlibrary();
+    }, []);
+
+    console.log(alllibrary);
+    const check = [...alllibrary].filter(
+        item => item?.Game?.id === Number(gameId) && item?.User?.id === Number(userId)
+    );
+    // check
+    console.log(check[0]);
 
     const allcommentFilter = [...allcomment].filter(item => item?.Game?.id === Number(gameId));
 
@@ -72,14 +87,16 @@ function VdoAndPurchase() {
 
     const handleSubmitcomment = async e => {
         try {
-            e.preventDefault();
-            await axios.post("/commentGame", {
-                comment,
-                userId,
-                gameId,
-            });
-            setComment("");
-            setRefresh(cur => !cur);
+            if (comment.trim() !== "") {
+                e.preventDefault();
+                await axios.post("/commentGame", {
+                    comment,
+                    userId,
+                    gameId,
+                });
+                setComment("");
+                setRefresh(cur => !cur);
+            }
         } catch (err) {
             console.log(err);
         }
@@ -100,27 +117,34 @@ function VdoAndPurchase() {
                         {oneGame?.data?.oneGame?.price -
                             (oneGame?.data?.oneGame?.price / 100) * oneGame?.data?.oneGame?.discount}
                     </p>
-                    <button className="btn btn-primary btn-lg" onClick={handleClickBuygame}>
-                        PURCHASE
-                    </button>
+                    {check[0] ? (
+                        <p>You already purchase</p>
+                    ) : (
+                        <button className="btn btn-primary btn-lg" onClick={handleClickBuygame}>
+                            PURCHASE
+                        </button>
+                    )}
                 </div>
             </div>
             <div className="gamePageDiscription">
                 <p>{oneGame?.data?.oneGame?.name}</p>
                 <p>{oneGame?.data?.oneGame?.discription}</p>
             </div>
-            <div class="input-group commentbox">
-                <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Comment"
-                    value={comment}
-                    onChange={e => setComment(e.target.value)}
-                />
-                <button className="btn btn-primary" onClick={handleSubmitcomment}>
-                    Submit
-                </button>
-            </div>
+            {user && (
+                <div class="input-group commentbox">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Comment"
+                        value={comment}
+                        onChange={e => setComment(e.target.value)}
+                    />
+                    <button className="btn btn-primary" onClick={handleSubmitcomment}>
+                        Submit
+                    </button>
+                </div>
+            )}
+
             {allcommentFilter
                 .sort((a, b) => b.id - a.id)
                 .map(item => (
