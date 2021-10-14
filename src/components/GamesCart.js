@@ -41,7 +41,7 @@ function GamesCart({ name, gameCover, discount, fullprice, discountPrice, gameId
                 <h5>{name}</h5>
                 <div className={`${Number(discount) === 0 ? "cardgameNosale" : "cardgameDetail"}`}>
                     {Number(discount) === 0 || <p className="cardgameDiscount">-{discount}%</p>}
-                    {Number(discount) === 0 || <p className="cardgameRealprice">TBH {fullprice}</p>}
+                    {Number(discount) === 0 || <p className="cardgameRealprice">THB {fullprice}</p>}
                     <p>TBH {discountPrice}</p>
                 </div>
             </div>

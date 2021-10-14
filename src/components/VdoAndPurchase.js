@@ -127,7 +127,7 @@ function VdoAndPurchase() {
                     </div>
                     <p style={{ color: "orange", margin: "0" }}>PRICE</p>
                     <p style={{ paddingBottom: "40px  " }}>
-                        TBH{" "}
+                        THB{" "}
                         {oneGame?.data?.oneGame?.price -
                             (oneGame?.data?.oneGame?.price / 100) * oneGame?.data?.oneGame?.discount}
                     </p>

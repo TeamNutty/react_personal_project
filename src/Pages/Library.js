@@ -22,7 +22,7 @@ function Library() {
         getlibrary();
     }, []);
 
-    const mylibrary = [...ownGame].filter(item => item.User.id === user?.id);
+    const mylibrary = [...ownGame].filter(item => item.User.id === user.id && item.Game);
     console.log(mylibrary);
     return (
         <div>
@@ -32,7 +32,7 @@ function Library() {
                     <Title titleName="My Libraly" />
                     <div className="Gamecontainer">
                         {mylibrary.map(item => (
-                            <Mygame name={item.Game.name} gameCover={item.Game.gameCover} />
+                            <Mygame name={item.Game?.name} gameCover={item.Game?.gameCover} />
                         ))}
                     </div>
                 </ContainerPage>
