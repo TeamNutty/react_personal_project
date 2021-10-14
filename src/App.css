@@ -39,6 +39,7 @@ body {
     align-items: center;
     color: white;
 }
+
 /* Header */
 
 .header {
@@ -666,6 +667,10 @@ textarea {
 .showpic img {
     width: 100%;
     border-radius: 10px;
+}
+
+.changeColortext {
+    color: rgb(219, 219, 219) !important;
 }
 /* Responsive */
 @media only screen and (max-width: 1000px) {

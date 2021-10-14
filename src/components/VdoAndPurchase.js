@@ -71,9 +71,23 @@ function VdoAndPurchase() {
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
                     confirmButtonText: "Confirm Purchase",
+                    background: "#1f1f1f",
+                    customClass: {
+                        title: "changeColortext",
+                        htmlContainer: "changeColortext",
+                    },
                 }).then(result => {
                     if (result.isConfirmed) {
-                        Swal.fire("Purchase!", `${oneGame?.data?.oneGame?.name} already in Library`, "success");
+                        Swal.fire({
+                            title: "Purchase!",
+                            text: `${oneGame?.data?.oneGame?.name} already in Library`,
+                            icon: "success",
+                            background: "#1f1f1f",
+                            customClass: {
+                                title: "changeColortext",
+                                htmlContainer: "changeColortext",
+                            },
+                        });
                         const newgame = axios.post("/buygame", { price, gameId, userId });
                         setRefresh(cur => !cur);
                         history.push("/library");
@@ -118,7 +132,7 @@ function VdoAndPurchase() {
                             (oneGame?.data?.oneGame?.price / 100) * oneGame?.data?.oneGame?.discount}
                     </p>
                     {check[0] ? (
-                        <p>You already purchase</p>
+                        <p style={{ color: "grey" }}>Purchased</p>
                     ) : (
                         <button className="btn btn-primary btn-lg" onClick={handleClickBuygame}>
                             PURCHASE

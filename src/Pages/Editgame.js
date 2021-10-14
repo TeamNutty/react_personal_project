@@ -122,7 +122,12 @@ function Editgame() {
                     <input type="text" value={trailerLink} onChange={e => setTrailerLink(e.target.value)} />
 
                     <p>Discription</p>
-                    <input type="text" value={discription} onChange={e => setDiscription(e.target.value)} />
+                    <textarea
+                        style={{ marginBottom: "30px", border: "2px solid #4b4b4b" }}
+                        type="text"
+                        value={discription}
+                        onChange={e => setDiscription(e.target.value)}
+                    />
 
                     <button className="submitbutton">Confirm Editing</button>
                 </form>

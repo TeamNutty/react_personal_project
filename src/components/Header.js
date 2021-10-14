@@ -26,9 +26,23 @@ function Header({ classname }) {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Logout",
+            background: "#1f1f1f",
+            customClass: {
+                title: "changeColortext",
+                htmlContainer: "changeColortext",
+            },
         }).then(result => {
             if (result.isConfirmed) {
-                Swal.fire("Success!", "logout successful", "success");
+                Swal.fire({
+                    title: "Success!",
+                    text: "logout successful",
+                    icon: "success",
+                    background: "#1f1f1f",
+                    customClass: {
+                        title: "changeColortext",
+                        htmlContainer: "changeColortext",
+                    },
+                });
                 removeToken();
                 setUser(null);
                 history.push("/");
